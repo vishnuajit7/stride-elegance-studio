@@ -52,6 +52,12 @@ export default {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
 				},
+				// Sport Brand Colors for Athletic Theme
+				sport: {
+					primary: 'hsl(var(--sport-primary))',
+					secondary: 'hsl(var(--sport-secondary))',
+					success: 'hsl(var(--sport-success))'
+				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',
 					foreground: 'hsl(var(--sidebar-foreground))',
@@ -63,6 +69,26 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				}
 			},
+			fontFamily: {
+				sans: [
+					'Inter',
+					'system-ui',
+					'-apple-system',
+					'BlinkMacSystemFont',
+					'Segoe UI',
+					'Roboto',
+					'sans-serif'
+				],
+				display: [
+					'Inter',
+					'system-ui',
+					'sans-serif'
+				]
+			},
+			fontSize: {
+				'hero': ['4rem', { lineHeight: '0.9', letterSpacing: '-0.02em', fontWeight: '900' }],
+				'display': ['2.5rem', { lineHeight: '1.1', letterSpacing: '-0.01em', fontWeight: '800' }],
+			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
@@ -70,25 +96,44 @@ export default {
 			},
 			keyframes: {
 				'accordion-down': {
-					from: {
-						height: '0'
-					},
-					to: {
-						height: 'var(--radix-accordion-content-height)'
-					}
+					from: { height: '0' },
+					to: { height: 'var(--radix-accordion-content-height)' }
 				},
 				'accordion-up': {
-					from: {
-						height: 'var(--radix-accordion-content-height)'
-					},
-					to: {
-						height: '0'
-					}
+					from: { height: 'var(--radix-accordion-content-height)' },
+					to: { height: '0' }
+				},
+				'fade-in': {
+					'0%': { opacity: '0', transform: 'translateY(10px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'slide-up': {
+					'0%': { opacity: '0', transform: 'translateY(20px)' },
+					'100%': { opacity: '1', transform: 'translateY(0)' }
+				},
+				'scale-in': {
+					'0%': { opacity: '0', transform: 'scale(0.95)' },
+					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'hover-lift': {
+					'0%': { transform: 'translateY(0)' },
+					'100%': { transform: 'translateY(-4px)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'fade-in': 'fade-in 0.3s ease-out',
+				'slide-up': 'slide-up 0.4s ease-out',
+				'scale-in': 'scale-in 0.2s ease-out',
+				'hover-lift': 'hover-lift 0.2s ease-out'
+			},
+			transitionTimingFunction: {
+				'athletic': 'cubic-bezier(0.4, 0, 0.2, 1)'
+			},
+			boxShadow: {
+				'athletic': '0 4px 20px rgba(0, 0, 0, 0.1)',
+				'athletic-lg': '0 8px 32px rgba(0, 0, 0, 0.12)'
 			}
 		}
 	},
