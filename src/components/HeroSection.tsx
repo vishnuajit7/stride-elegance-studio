@@ -32,7 +32,11 @@ const HeroSection = () => {
               <Button size="lg" className="btn-hero bg-accent text-accent-foreground hover:bg-accent/90">
                 Shop Now
               </Button>
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-white/30 text-white hover:bg-accent hover:text-accent-foreground hover:border-accent transition-all duration-300"
+              >
                 View Collection
               </Button>
             </div>

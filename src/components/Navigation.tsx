@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { ShoppingCart, Menu, X, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   const navigationItems = [
     { label: 'Men', href: '/men' },
@@ -19,23 +21,29 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <h1 className="text-2xl font-bold tracking-tight">
+            <Link to="/" className="text-2xl font-bold tracking-tight hover:text-accent transition-colors">
               SOLE<span className="text-accent">STRIDE</span>
-            </h1>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:block">
             <div className="ml-10 flex items-baseline space-x-8">
               {navigationItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-accent px-3 py-2 text-sm font-medium transition-colors duration-200 relative group"
+                  to={item.href}
+                  className={`px-3 py-2 text-sm font-medium transition-colors duration-200 relative group ${
+                    location.pathname === item.href
+                      ? 'text-accent'
+                      : 'text-foreground hover:text-accent'
+                  }`}
                 >
                   {item.label}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-accent transition-all duration-200 group-hover:w-full"></span>
-                </a>
+                  <span className={`absolute -bottom-1 left-0 h-0.5 bg-accent transition-all duration-200 ${
+                    location.pathname === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                  }`}></span>
+                </Link>
               ))}
             </div>
           </div>
@@ -80,14 +88,18 @@ const Navigation = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
               {navigationItems.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
-                  className="text-foreground hover:text-accent block px-3 py-2 text-base font-medium transition-colors duration-200"
+                  to={item.href}
+                  className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+                    location.pathname === item.href
+                      ? 'text-accent'
+                      : 'text-foreground hover:text-accent'
+                  }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
